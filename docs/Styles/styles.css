@@ -1,0 +1,46 @@
+/* ==============================================================
+     Main Page Styling
+   ============================================================== */
+
+.std-section {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+}
+
+.section-title {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.section-p {
+    
+}
+
+.grid-section-p {
+    align-content: center;
+    margin: 2em;
+}
+
+/* --------------------------------------------------------------
+     Style for Chronical Lists
+   -------------------------------------------------------------- */
+
+.chronical-li * {
+    margin: 0;
+}
+
+.chronical-li-h2 {
+    font-size: 16px;
+}
+
+.chronical-li {
+    display: grid; 
+    grid-template-columns: 5rem 1fr;
+    column-gap: 1rem;
+    padding: 0.5em;
+    list-style: none;
+}
+
+/* ==============================================================
+     Leftovers and tests
+   ============================================================== */
