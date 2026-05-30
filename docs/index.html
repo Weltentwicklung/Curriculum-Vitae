@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/styles.css">
-    <script></script>
+    <script src="Scripts/js.js" defer></script>
     <title>Curriculum Vitae</title>
 </head>
 
@@ -505,8 +505,10 @@
 
             <h1 class="centered-title">About me</h1>
 
-            <image src="/images/blank-selfe.webp"
-                alt="Oh no, my Image gets brocken. If my face matters, help to reapair it"></image>
+            <button id="image-game-button" aria-label="Button to a visual game. It's not optimized for screen readers">
+                Oh no!<br>
+                My image is brocken, if you really want to see my face,
+                click here to fix the Image yourselfe.</button>
 
             <p class="grid-section-p">In 2003 I completed an apprenticeship as a chemical laboratory        technician, followed by a homeopathy school. Since then I have directed much of my energy into personal and voluntary projects, through which I gained valuable experience across a wide range of fields. Most recently I launched a federal popular initiative. In July 2025 I started a certificate course in IT at the Digital Talents Program by IT-Rockt. I am now looking for a  part-time position that allows me to pursue personal projects alongside my professional work.
                 <br>Beside that i will continue to work on my political and ideological projects.
@@ -533,6 +535,10 @@
     </footer>
 
 
+    <dialog id="image-game-popup" class="dialog-field">
+        <p>hi there</p>
+        <button id="close-image-game">close</button>
+    </dialog>
 </body>
 
 </html>
