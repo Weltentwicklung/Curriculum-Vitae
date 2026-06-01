@@ -22,6 +22,7 @@ button:hover {
 }
 
 
+
 /* ==============================================================
      Global Vaiables
    ============================================================== */
@@ -214,21 +215,9 @@ nav a {
 #guessing-name-game {
     background-color: var(--std-color-1);
     color: var(--std-color-2);
+    padding: 0.9em 1.7em;
 }
 
-#experience {
-    animation: reveal-down 5.5s ease 2s both;
-
-}
-
-@keyframes reveal-down {
-    from {
-        clip-path: inset(0 0 100% 0);
-    }
-    to {
-        clip-path: inset(0 0 0% 0);
-    }
-}
 
 /* ==============================================================
      Chronical List Styling
@@ -243,7 +232,7 @@ ul {
 }
 
 .chronical-li-h2 {
-    font-size: 16px;
+    font-size: 1.3em;
 }
 
 .chronical-li {
