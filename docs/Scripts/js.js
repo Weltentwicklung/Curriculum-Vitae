@@ -1,5 +1,5 @@
    /* ==============================================================
-     Dynamically Visible Header
+     Header functionalities
    ============================================================== */
 
 let prevScrollPos = window.pageYOffset;
@@ -17,6 +17,27 @@ window.addEventListener("scroll", () => {
   }
 });
    
+const navSection = document.getElementById("nav-section");
+const popupNavBtn = document.getElementById("popup-nav-btn");
+const reziseObsForNav = new ResizeObserver(() => {
+  displayNavItem();
+});
+reziseObsForNav.observe(document.body);
+
+function displayNavItem() {
+  popupNavBtn.classList.add("hide-nav-item");
+  navSection.classList.remove("hide-nav-item");
+  
+  let headerWidth = document.getElementById("header").clientWidth;
+  let headerFlexWidth = document.getElementById("header").scrollWidth;
+
+  if (headerFlexWidth > headerWidth) {
+    popupNavBtn.classList.remove("hide-nav-item");
+    navSection.classList.add("hide-nav-item");
+  }
+}
+
+
    /* ==============================================================
      Image Game Functionalities
    ============================================================== */
@@ -101,7 +122,7 @@ const observer = new ResizeObserver(() => {
   scaleGameBoxes(puzzleSection);
 });
 
-
+/* Click - function that initialize the popupgame */
 document.getElementById("image-game-button").addEventListener("click", () => {
   puzzleBox.innerHTML = "";
   imageGamePopup.showModal();
@@ -110,13 +131,16 @@ document.getElementById("image-game-button").addEventListener("click", () => {
   scaleGameBoxes(puzzleSection);
   setPuzzlePieces(puzzlePieceList, puzzleBox);
   
-alert ("width" + puzzleSection.offsetWidth);
-alert ("height" + puzzleSection.offsetHeight);
   observer.observe(imageGamePopup);
 
 });
 
+/* Close-Button */
 document.getElementById("close-image-game").addEventListener("click", () => {
+  observer.disconnect();
+  imageGamePopup.close();
+});
+document.getElementById("close-image-game-2").addEventListener("click", () => {
   observer.disconnect();
   imageGamePopup.close();
 });
@@ -125,7 +149,7 @@ document.getElementById("close-image-game").addEventListener("click", () => {
         Styling
    -------------------------------------------------------------- */
 
-
+/* load all puzzle pieces and set their css */
 function setPuzzlePieces(puzzleList, puzzleBox) {
   const zIndexPool = Array.from({length: 64}, (_, i) => i + 101);
   for (const piece of puzzleList) {
@@ -144,6 +168,7 @@ function setPuzzlePieces(puzzleList, puzzleBox) {
   }
 }
 
+/* Scaling the puzzle box when the popup opens or user rezises the window */
 function scaleGameBoxes(puzzleSection) {
     const puzzleSize = Math.min(puzzleSection.offsetWidth, puzzleSection.offsetHeight);
     const puzzleScale = puzzleSize / 1600;
