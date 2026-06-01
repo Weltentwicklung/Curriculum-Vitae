@@ -244,3 +244,84 @@ puzzleBox.addEventListener("touchmove", (e) => {
 document.getElementById("info-button").addEventListener("click", () => {
     alert("Double click to select a piece\nMove mouse to drag\nDouble click to place");
 });
+
+   /* ==============================================================
+     Guessing Name Game
+   ============================================================== */
+
+const nameGameButton = document.getElementById("guessing-name-game");
+const riskLiveButton = document.getElementById("risk-live-btn");
+const closeNameGameBtn = document.getElementById("close-name-game");
+const nameGameDialog = document.getElementById("name-game-dialog");
+const livesDisplay = document.getElementById("lives-display");
+const correctChars = document.getElementById("correct-chars");
+const charInput = document.getElementById("char-input")
+var lives = 5;
+const solutionString = ["s","t","e","f","a","n"," ","h","u","b","s","c","h","m","i","d"];
+let guessedString = ["_","_","_","_","_","_"," ","_","_","_","_","_","_","_","_","_"];
+
+   /* --------------------------------------------------------------
+        Entry - Exit
+   -------------------------------------------------------------- */
+
+function updateDisplay() {
+    correctChars.textContent = guessedString.join("");
+    livesDisplay.innerHTML = `You have ${lives} lives left`;
+}
+
+nameGameButton.addEventListener("click", () => {
+  nameGameDialog.showModal();
+  updateDisplay();
+  lives = 5;
+  guessedString.fill("_");
+  guessedString[6] = " ";
+});
+
+
+riskLiveButton.addEventListener("click", () => {
+    const guess = charInput.value.toLowerCase();
+    charInput.value = "";
+    if (lives === 0) {
+      livesDisplay.innerHTML = "(∩｀-´)⊃━☆ﾟ.*･｡ﾟ no live to risk left, nice try...";
+      return;
+    }
+    if (!guess) return;
+
+
+    if (guess.length !== 1 || !/[a-z]/.test(guess)) {
+    lives--;
+    livesDisplay.innerHTML = "Invalid input — one letter only. You still risked a life! (∀‿∀) ~muahahaha~";
+    return;
+    }
+
+    let correct = false;
+    for (let i = 0; i < solutionString.length; i++) {
+        if (solutionString[i] === guess) {
+            guessedString[i] = guess;
+            correct = true;
+        }
+    }
+
+    if (!correct) {
+      lives--;
+    }
+
+    if (lives === 0) {
+      livesDisplay.innerHTML = "Thanks for you lives ♡\(^▽^)/♡ see you arond buddy..."
+      return;
+    }
+
+
+    if (!guessedString.includes("_")) {
+      updateDisplay();
+      livesDisplay.innerHTML = "You got me there (╥_╥) now i feel naked..."
+      return;
+    }
+
+    updateDisplay();
+  });
+
+closeNameGameBtn.addEventListener("click", () => {
+  nameGameDialog.close();
+})
+        

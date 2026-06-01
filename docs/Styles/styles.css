@@ -117,6 +117,10 @@ nav a {
     background-color: var(--std-color-1);
 }
 
+#popup-nav-menu:not([open]) {
+    display: none;
+}
+
 #popup-nav-title {
     text-align: center;
     padding: 8vh;
@@ -300,7 +304,7 @@ ul {
 }
 
 .dialog-icons {
-    position: fixed;
+    position: absolute;
     top: 8px;
     right: 8px;
     display: flex;
@@ -383,4 +387,92 @@ ul {
 
 dialog:not([open]) {
     display: none;
+}
+
+/* ==============================================================
+     Name Game Styling
+   ============================================================== */
+
+#name-game-dialog {
+    place-items: center;
+    width: 90%;
+    height: 90%;
+    padding:0;
+    border: 0.2em solid var(--std-color-1);
+    border-radius: 2vw 2vh;
+}
+
+#name-game-dialog::backdrop {
+    background-color: color-mix(in srgb, var(--std-color-1) 40%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+#name-game-container{
+    min-height:100%;
+    display: flex;
+    align-items: stretch;
+    padding:0;
+    flex-direction: column;
+    background-color: var(--std-color-2);
+}
+
+#name-game-dialog p {
+    text-align: center;
+}
+
+#correct-chars {
+    letter-spacing: 0.2em;
+}
+
+#name-game-title {
+    padding: 1em;
+    text-align: center;
+    background-color: var(--std-color-3);
+    color: var(--std-color-1);
+}
+
+#name-game-intro{
+    padding: 1em;
+    background-color: var(--std-color-2);
+    color: var(--std-color-1);
+    margin: 0;
+}
+
+#lives-display {
+    background-color: var(--std-color-1);
+    color: var(--std-color-3);
+    margin: 0;
+    padding: 1.2em;
+}
+
+#name-game-instr {
+    padding: 0.5em;
+    background-color: var(--std-color-2);
+    color: var(--std-color-1);
+    margin: 0;
+}
+
+#char-input{
+    width: 13em;
+    align-self: center;
+    padding: 0.2em;
+    margin: 1em;
+}
+
+#risk-live-btn {
+    width: 13em;
+    align-self: center;
+    background-color: var(--std-color-3);
+}
+
+#name {
+    width: 20em;
+    align-self: center;
+    margin: 2em;
+}
+
+#close-name-game{
+    background-color: lightcoral;
+    width: 8em;
+    align-self: center;
 }
