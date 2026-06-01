@@ -2,6 +2,7 @@
      Header functionalities
    ============================================================== */
 
+/* show and hide menu */
 let prevScrollPos = window.pageYOffset;
 const header = document.querySelector("header");
 
@@ -17,6 +18,7 @@ window.addEventListener("scroll", () => {
   }
 });
    
+/* show and hide nav ul and nav button */
 const navSection = document.getElementById("nav-section");
 const popupNavBtn = document.getElementById("popup-nav-btn");
 const reziseObsForNav = new ResizeObserver(() => {
@@ -36,6 +38,31 @@ function displayNavItem() {
     navSection.classList.add("hide-nav-item");
   }
 }
+
+/* nav popup settings on nav button click */
+document.getElementById("popup-nav-btn").addEventListener("click", () => {
+  document.getElementById("popup-nav-menu").showModal();
+});
+
+document.getElementById("popup-nav-btn-inro").addEventListener("click", () => {
+  document.getElementById("popup-nav-menu").close();
+});
+
+document.getElementById("popup-nav-btn-exper").addEventListener("click", () => {
+  document.getElementById("popup-nav-menu").close();
+});
+
+document.getElementById("popup-nav-btn-edu").addEventListener("click", () => {
+  document.getElementById("popup-nav-menu").close();
+});
+
+document.getElementById("popup-nav-btn-sk").addEventListener("click", () => {
+  document.getElementById("popup-nav-menu").close();
+});
+
+document.getElementById("popup-nav-btn-about").addEventListener("click", () => {
+  document.getElementById("popup-nav-menu").close();
+});
 
 
    /* ==============================================================
@@ -183,7 +210,7 @@ function scaleGameBoxes(puzzleSection) {
 
 let selectedPiece = null;
 
-document.addEventListener("dblclick", (e) => {
+puzzleBox.addEventListener("dblclick", (e) => {
     if (e.target.tagName === "IMG" && selectedPiece === null) {
         selectedPiece = e.target;
         selectedPiece.style.cursor = "grabbing";
@@ -193,7 +220,7 @@ document.addEventListener("dblclick", (e) => {
     }
 });
 
-document.addEventListener("mousemove", (e) => {
+puzzleBox.addEventListener("mousemove", (e) => {
     if (selectedPiece === null) return;
     const box = selectedPiece.parentElement.getBoundingClientRect();
     const scale = box.width / 1600;
@@ -201,7 +228,7 @@ document.addEventListener("mousemove", (e) => {
     selectedPiece.style.top = (e.clientY - box.top) / scale + "px";
 });
 
-document.addEventListener("touchmove", (e) => {
+puzzleBox.addEventListener("touchmove", (e) => {
     if (selectedPiece === null) return;
     const touch = e.touches[0];
     const box = selectedPiece.parentElement.getBoundingClientRect();
